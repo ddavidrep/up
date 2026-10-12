@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Uppsala Grilled Burger - Hamburguesas a la parrilla con carne natural y pan artesanal."
+    >
+
+    <title>Uppsala Grilled Burger</title>
+
+    <link rel="icon" href="assets/img/logo1.jpeg">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+
+<body>
+
+    <!-- ========================================
+                    ENCABEZADO
+    ========================================= -->
+
+    <header class="site-header">
+
+        <nav class="navbar">
+
+            <a href="#inicio" class="brand">
+
+                <img
+                    src="assets/img/logo1.jpeg"
+                    alt="Logo de Uppsala Grilled Burger"
+                    class="brand__logo"
+                >
+
+                <span class="brand__text">
+                    UPPSALA
+                    <small>GRILLED BURGER</small>
+                </span>
+
+            </a>
+
+            <button
+                type="button"
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                aria-label="Abrir menú de navegación"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="navigation" id="navigation">
+
+                <li>
+                    <a href="#inicio">Inicio</a>
+                </li>
+
+                <li>
+                    <a href="#menu">Menú</a>
+                </li>
+
+                <li>
+                    <a href="#concepto">Concepto</a>
+                </li>
+
+                <li>
+                    <a href="#contacto">Contacto</a>
+                </li>
+
+            </ul>
+
+            <button
+                type="button"
+                class="header-cart-button"
+                id="headerCartButton"
+            >
+                <span aria-hidden="true">🛒</span>
+
+                <span>Carrito</span>
+
+                <span
+                    class="cart-count"
+                    id="cartCount"
+                >
+                    0
+                </span>
+            </button>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!--HERO-->
+
+        <section class="hero" id="inicio">
+
+            <div class="hero__media">
+
+                <img
+                    src="assets/img/cuadro.webp"
+                    alt="Hamburguesa a la parrilla Uppsala"
+                    class="hero__image"
+                >
+
+            </div>
+
+            <div class="hero__overlay"></div>
+
+            <div class="hero__decoration" aria-hidden="true">
+                <span>COMER</span>
+                <span>COMO UN</span>
+                <span>VIKINGO</span>
+            </div>
+
+            <div class="hero__content">
+
+                <p class="section-label">
+                    SABOR SIN REGLAS
+                </p>
+
+                <h1>
+                    COMIDA
+                    <span>con actitud.</span>
+                </h1>
+
+                <p class="hero__description">
+                    Disfruta de nuestras hamburguesas a la parrilla, hot dogs, alitas, boneless y malteadas con una personalidad única, natural y artesanal.
+                </p>
+
+                <div class="hero__actions">
+
+                    <a href="#menu" class="button button--primary">
+                        Explorar menú
+                        <span aria-hidden="true">↓</span>
+                    </a>
+
+                    <button
+                        type="button"
+                        class="button button--secondary"
+                        id="heroCartButton"
+                    >
+                        Ver carrito
+                        <span aria-hidden="true">🛒</span>
+                    </button>
+
+                </div>
+
+                <div class="hero__highlights">
+
+                    <span>
+                        <strong>100%</strong>
+                        Carne natural
+                    </span>
+
+                    <span>
+                        <strong>8</strong>
+                        Categorías
+                    </span>
+
+                    <span>
+                        <strong>🔥</strong>
+                        Sabor a la parrilla
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!--MENÚ-->
+
+        <section class="menu-section" id="menu">
+
+            <div class="section-container">
+
+                <header class="section-heading">
+
+                    <p class="section-label">
+                        NUESTRO MENÚ
+                    </p>
+
+                    <h2>
+                        Elige tu próxima
+                        <span>obsesión.</span>
+                    </h2>
+
+                    <p>
+                        Selecciona una categoría, personaliza tus ingredientes
+                        y arma tu pedido directamente.
+                    </p>
+
+                </header>
+
+
+                <!-- ESTADO Y HORARIOS DEL RESTAURANTE -->
+                <section
+                    class="restaurant-hours-card"
+                    id="restaurantHoursCard"
+                    aria-live="polite"
+                >
+                    <div class="restaurant-hours-card__status">
+                        <span
+                            class="restaurant-hours-card__dot"
+                            id="restaurantStatusDot"
+                            aria-hidden="true"
+                        ></span>
+
+                        <div>
+                            <p
+                                class="restaurant-hours-card__eyebrow"
+                                id="restaurantStatusLabel"
+                            >
+                                Revisando horario...
+                            </p>
+
+                            <strong
+                                class="restaurant-hours-card__headline"
+                                id="restaurantStatusHeadline"
+                            >
+                                Un momento
+                            </strong>
+
+                            <p
+                                class="restaurant-hours-card__message"
+                                id="restaurantStatusMessage"
+                            ></p>
+                        </div>
+                    </div>
+
+                    <div class="restaurant-hours-card__schedule">
+                        <div class="restaurant-hours-card__slot">
+                            <span class="restaurant-hours-card__icon" aria-hidden="true">☀️</span>
+                            <div>
+                                <small>Desayunos</small>
+                                <strong id="breakfastHoursText">07:00 – 11:00</strong>
+                            </div>
+                        </div>
+
+                        <div class="restaurant-hours-card__slot">
+                            <span class="restaurant-hours-card__icon" aria-hidden="true">🍔</span>
+                            <div>
+                                <small>Comida / Parrilla</small>
+                                <strong id="foodHoursText">18:00 – 23:00</strong>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- CAMBIO DE TURNO DEL MENÚ -->
+                <div class="meal-switcher" id="mealSwitcher" aria-label="Turno del menú">
+
+                    <button
+                        type="button"
+                        class="meal-switcher__button"
+                        data-meal-period="desayuno"
+                    >
+                        <span>☀️</span>
+                        Desayunos
+                    </button>
+
+                    <button
+                        type="button"
+                        class="meal-switcher__button"
+                        data-meal-period="comida"
+                    >
+                        <span>🍔</span>
+                        Comida y Parrilla
+                    </button>
+
+                </div>
+
+                <div class="schedule-status" id="menuScheduleStatus" aria-live="polite"></div>
+
+                <div
+                    class="menu-filters"
+                    id="menuFilters"
+                    aria-label="Categorías del menú"
+                >
+
+                    <button
+                        type="button"
+                        class="filter-button active"
+                        data-category="todos"
+                    >
+                        Todos
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-category="hamburguesas"
+                    >
+                        Hamburguesas
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-category="hotdogs"
+                    >
+                        Hot Dogs
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-category="alitas"
+                    >
+                        Alitas y Boneless
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-category="antojitos"
+                    >
+                        Antojitos
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-category="papas"
+                    >
+                        Papas y Extras
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-category="malteadas"
+                    >
+                        Malteadas
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-category="bebidas"
+                    >
+                        Bebidas
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-category="postres"
+                    >
+                        Postres
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="products-grid"
+                    id="productsGrid"
+                    aria-live="polite"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!--CONCEPTO DEL RESTAURANTE-->
+
+        <section class="concept-section" id="concepto">
+
+            <div class="section-container concept-grid">
+
+                <div class="concept-content">
+
+                    <p class="section-label">
+                        NUESTRA FILOSOFÍA
+                    </p>
+
+                    <h2>
+                        Parrilla, neón
+                        <span>y estilo.</span>
+                    </h2>
+
+                    <p>
+                        En Uppsala Grilled Burger combinamos hamburguesas artesanales a la parrilla con una estética alternativa llena de cuadros, colores vibrantes y la mejor energía. Nos buscan muchísimo por nuestra carne natural y pan artesanal.
+                    </p>
+
+                    <div class="concept-features">
+
+                        <article>
+                            <span>01</span>
+                            <div>
+                                <h3>Carne a la parrilla</h3>
+                                <p>
+                                    Ingredientes frescos y recetas preparadas en casa con el auténtico toque grill y pan artesanal.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article>
+                            <span>02</span>
+                            <div>
+                                <h3>Personalización total</h3>
+                                <p>
+                                    Elige tus paquetes, cambia guarniciones o agrega extras con total flexibilidad.
+                                </p>
+                            </div>
+                        </article>
+
+                        <article>
+                            <span>03</span>
+                            <div>
+                                <h3>Pedido rápido</h3>
+                                <p>
+                                    Arma tu carrito y envíalo directamente por WhatsApp en segundos.
+                                </p>
+                            </div>
+                        </article>
+
+                    </div>
+
+                </div>
+
+
+                <div class="concept-poster">
+
+                    <div class="concept-poster__border">
+
+                        <p>EST. 2023</p>
+
+                        <strong>UPPSALA</strong>
+
+                        <span>
+                            GRILLED BURGER
+                            <br>
+                            & MORE
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!--CONTACTO-->
+
+        <section class="contact-section" id="contacto">
+
+            <div class="section-container contact-box">
+
+                <div>
+
+                    <p class="section-label">
+                        ¿LISTO PARA ORDENAR?
+                    </p>
+
+                    <h2>
+                        Arma tu pedido
+                        <span>y envíalo.</span>
+                    </h2>
+
+                    <p>
+                        Agrega tus productos favoritos, personaliza tus complementos
+                        y manda tu pedido directo al WhatsApp oficial: 720 632 5940.
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="button button--primary"
+                    id="contactCartButton"
+                >
+                    Abrir carrito
+                    <span aria-hidden="true">🛒</span>
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+        <!--FOOTER-->
+
+    <footer class="footer">
+
+        <div class="section-container footer-grid">
+
+            <div class="footer-brand">
+
+                <strong>UPPSALA</strong>
+
+                <span>GRILLED BURGER</span>
+
+                <p>
+                    Comprometidos con la sana convivencia familiar y el mejor sabor a la parrilla.
+                </p>
+
+            </div>
+
+            <div>
+
+                <h3>Navegación</h3>
+
+                <a href="#inicio">Inicio</a>
+                <a href="#menu">Menú</a>
+                <a href="#concepto">Concepto</a>
+                <a href="#contacto">Contacto</a>
+
+            </div>
+
+            <div>
+
+                <h3>Aviso Importante</h3>
+
+                <p>Prohibido vender o ingresar bebidas alcohólicas en el establecimiento.</p>
+                <span>¡Muchas gracias por su comprensión!</span>
+
+            </div>
+
+            <div>
+
+                <h3>Contacto</h3>
+
+                <p>WhatsApp</p>
+                <span>720 632 5940</span>
+
+                <p>Instagram</p>
+                <span>@uppsala_grilledburguer</span>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                © 2026 Uppsala Grilled Burger. Todos los derechos reservados.
+            </p>
+        </div>
+
+    </footer>
+
+
+    <!--MODAL DE PERSONALIZACIÓN-->
+
+    <div
+        class="modal"
+        id="productModal"
+        aria-hidden="true"
+    >
+
+        <div class="modal__backdrop" data-close-modal></div>
+
+        <section
+            class="modal__dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modalProductName"
+        >
+
+            <button
+                type="button"
+                class="modal__close"
+                data-close-modal
+                aria-label="Cerrar personalización"
+            >
+                ×
+            </button>
+
+            <div class="modal__image-wrapper">
+
+                <img
+                    src=""
+                    alt=""
+                    class="modal__image"
+                    id="modalProductImage"
+                >
+
+            </div>
+
+            <div class="modal__content">
+
+                <p class="section-label">
+                    PERSONALIZA TU PRODUCTO
+                </p>
+
+                <div class="modal__heading">
+
+                    <div>
+
+                        <h2 id="modalProductName">
+                            Producto
+                        </h2>
+
+                        <p id="modalProductDescription">
+                            Descripción
+                        </p>
+
+                    </div>
+
+                    <strong id="modalProductPrice">
+                        $0.00
+                    </strong>
+
+                </div>
+
+
+                <form id="productOptionsForm">
+
+                    <fieldset
+                        class="options-group product-builder"
+                        id="productBuilderGroup"
+                        hidden
+                    >
+                        <legend>
+                            Ingredientes incluidos
+                        </legend>
+
+                        <p class="options-group__help">
+                            Activa o desactiva ingredientes según tus preferencias.
+                        </p>
+
+                        <div
+                            class="ingredient-options-list"
+                            id="productIngredientOptions"
+                        ></div>
+                    </fieldset>
+
+
+                    <fieldset class="options-group">
+
+                        <legend>
+                            Opciones / Presentación
+                        </legend>
+
+                        <div
+                            class="options-list"
+                            id="regularOptions"
+                        ></div>
+
+                    </fieldset>
+
+
+                    <fieldset class="options-group">
+
+                        <legend>
+                            Extras y complementos
+                        </legend>
+
+                        <div
+                            class="options-list"
+                            id="extraOptions"
+                        ></div>
+
+                    </fieldset>
+
+
+                    <div class="quantity-selector">
+
+                        <span>Cantidad</span>
+
+                        <div>
+
+                            <button
+                                type="button"
+                                id="decreaseModalQuantity"
+                                aria-label="Disminuir cantidad"
+                            >
+                                −
+                            </button>
+
+                            <strong id="modalQuantity">
+                                1
+                            </strong>
+
+                            <button
+                                type="button"
+                                id="increaseModalQuantity"
+                                aria-label="Aumentar cantidad"
+                            >
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <label class="notes-field">
+
+                        <span>Indicaciones adicionales</span>
+
+                        <textarea
+                            id="productNotes"
+                            rows="3"
+                            maxlength="180"
+                            placeholder="Ejemplo: sin cebolla, papas bien doradas..."
+                        ></textarea>
+
+                    </label>
+
+
+                    <button
+                        type="submit"
+                        class="button button--primary modal__add-button"
+                    >
+                        <span id="modalSubmitLabel">Agregar al carrito</span>
+
+                        <span id="modalButtonTotal">
+                            $0.00
+                        </span>
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!--CARRITO LATERAL-->
+
+    <div
+        class="cart-overlay"
+        id="cartOverlay"
+        aria-hidden="true"
+    ></div>
+
+    <aside
+        class="cart-sidebar"
+        id="cartSidebar"
+        aria-label="Carrito de compras"
+        aria-hidden="true"
+    >
+
+        <header class="cart-sidebar__header">
+
+            <div>
+
+                <p class="section-label">
+                    TU PEDIDO
+                </p>
+
+                <h2>Carrito</h2>
+
+            </div>
+
+            <button
+                type="button"
+                class="cart-sidebar__close"
+                id="closeCartButton"
+                aria-label="Cerrar carrito"
+            >
+                ×
+            </button>
+
+        </header>
+
+
+        <div class="cart-items" id="cartItems">
+
+            <div class="empty-cart" id="emptyCart">
+
+                <span>🛒</span>
+
+                <h3>Tu carrito está vacío</h3>
+
+                <p>
+                    Agrega productos deliciosos de nuestro menú para comenzar.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <footer class="cart-summary" id="cartSummary">
+
+            <button
+                type="button"
+                class="checkout-toggle"
+                id="checkoutToggle"
+                aria-expanded="true"
+                aria-controls="checkoutContent"
+                aria-label="Ocultar opciones para finalizar pedido"
+            >
+                <span class="checkout-toggle__handle" aria-hidden="true"></span>
+
+                <span class="checkout-toggle__row">
+                    <span
+                        class="checkout-toggle__arrow"
+                        id="checkoutToggleArrow"
+                        aria-hidden="true"
+                    >↓</span>
+
+                    <span
+                        class="checkout-toggle__text"
+                        id="checkoutToggleText"
+                    >Ocultar opciones</span>
+                </span>
+            </button>
+
+
+            <div class="cart-summary__row">
+                <span>Total</span>
+                <strong id="cartSubtotal">$0.00</strong>
+            </div>
+
+            <div
+                class="checkout-collapsible"
+                id="checkoutContent"
+            >
+                <div class="checkout-collapsible__inner">
+
+
+            <!-- TIPO DE ENTREGA -->
+            <fieldset class="checkout-block">
+                <legend>¿Cómo quieres recibir tu pedido?</legend>
+
+                <div class="fulfillment-options">
+
+                    <label class="fulfillment-option">
+                        <input type="radio" name="fulfillmentType" value="local" checked>
+                        <span class="fulfillment-option__icon">🍽️</span>
+                        <strong>En local</strong>
+                    </label>
+
+                    <label class="fulfillment-option">
+                        <input type="radio" name="fulfillmentType" value="llevar">
+                        <span class="fulfillment-option__icon">🛍️</span>
+                        <strong>Para llevar</strong>
+                    </label>
+
+                    <label class="fulfillment-option">
+                        <input type="radio" name="fulfillmentType" value="domicilio">
+                        <span class="fulfillment-option__icon">🏠</span>
+                        <strong>Domicilio</strong>
+                    </label>
+
+                </div>
+            </fieldset>
+
+            <!-- CAMPOS DINÁMICOS -->
+            <div class="checkout-fields">
+
+                <div class="checkout-field local-service-note" id="tableField">
+                    <span>Servicio en local</span>
+                    <p>La mesa se asignará al llegar. Tu pedido se enviará por WhatsApp al personal.</p>
+                </div>
+
+                <label class="checkout-field" id="customerNameField" hidden>
+                    <span>Nombre del cliente</span>
+                    <input
+                        type="text"
+                        id="customerName"
+                        maxlength="70"
+                        placeholder="Ej. Sofía Martínez"
+                        autocomplete="name"
+                    >
+                </label>
+
+                <label class="checkout-field" id="addressField" hidden>
+                    <span>Dirección de entrega</span>
+                    <textarea
+                        id="deliveryAddress"
+                        rows="3"
+                        maxlength="220"
+                        placeholder="Calle, número, colonia, referencias..."
+                        autocomplete="street-address"
+                    ></textarea>
+                </label>
+
+                <label class="checkout-field" id="referencesField" hidden>
+                    <span>Referencias adicionales</span>
+                    <textarea
+                        id="deliveryReferences"
+                        rows="2"
+                        maxlength="160"
+                        placeholder="Ej. Casa de dos pisos, portón negro..."
+                    ></textarea>
+                </label>
+
+                <label class="checkout-field">
+                    <span>Notas generales del pedido <small>(opcional)</small></span>
+                    <textarea
+                        id="orderNotes"
+                        rows="2"
+                        maxlength="180"
+                        placeholder="Ej. Salsas aparte, cubiertos extra..."
+                    ></textarea>
+                </label>
+
+            </div>
+
+            <!-- MÉTODO DE PAGO -->
+            <fieldset class="checkout-block payment-block">
+
+                <legend>Método de pago</legend>
+
+                <div class="payment-options">
+
+                    <label class="payment-option" id="cashPaymentOption">
+                        <input type="radio" name="paymentMethod" value="efectivo" checked>
+                        <span>💵</span>
+                        <strong>Efectivo</strong>
+                    </label>
+
+                    <label class="payment-option">
+                        <input type="radio" name="paymentMethod" value="transferencia">
+                        <span>⇄</span>
+                        <strong>Transferencia</strong>
+                    </label>
+
+                </div>
+
+                <p class="delivery-payment-notice" id="deliveryPaymentNotice" hidden>
+                    Los pedidos a domicilio se pagan únicamente por transferencia.
+                </p>
+
+                <div class="bank-details" id="bankDetails" hidden>
+                    <strong>Datos para transferencia (Mercado Pago)</strong>
+                    <p>CLABE: 722969010158052063</p>
+                    <p>Titular: Irene Alejandra García Cortés</p>
+                    <p>Favor de enviar comprobante por WhatsApp al 720 632 5940.</p>
+                </div>
+
+            </fieldset>
+
+            <p class="cart-summary__notice">
+                En pedidos a domicilio, el costo de envío se confirma por WhatsApp.
+            </p>
+
+            <button
+                type="button"
+                class="whatsapp-button"
+                id="sendWhatsAppButton"
+                disabled
+            >
+                Enviar pedido por WhatsApp
+                <span aria-hidden="true">↗</span>
+            </button>
+
+        
+                </div>
+            </div>
+
+        </footer>
+
+    </aside>
+
+    <!-- CARRITO FLOTANTE -->
+    <button
+        type="button"
+        class="floating-cart"
+        id="floatingCartButton"
+        aria-label="Abrir carrito"
+        hidden
+    >
+        <span class="floating-cart__icon">🛒</span>
+
+        <span class="floating-cart__content">
+            <strong id="floatingCartCount">0 productos</strong>
+            <small id="floatingCartTotal">$0.00</small>
+        </span>
+
+        <span class="floating-cart__action">
+            Ver pedido →
+        </span>
+    </button>
+
+
+    <!--NOTIFICACIÓN-->
+
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+    >
+        Producto agregado al carrito
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
