@@ -7,10 +7,11 @@
     --color-asphalt: #272727;
     --color-white: #FFFFFF;
     
-    /* Paleta Neón Multicolor Equilibrada */
+    /* Paleta Neón Multicolor + Toque de Verde Neón */
     --accent-yellow: #FFD700;
     --accent-magenta: #FF2A85;
     --accent-cyan: #00E5FF;
+    --accent-green: #39FF14;
 
     --border-dark: rgba(255, 255, 255, 0.12);
     --border-yellow: rgba(255, 215, 0, 0.45);
@@ -99,12 +100,14 @@ a {
 }
 
 .section-label {
-    color: var(--accent-cyan);
+    /* Toque de verde neón sutil en etiquetas seleccionadas */
+    color: var(--accent-green);
 
     font-size: 0.74rem;
     font-weight: 800;
     letter-spacing: 0.28rem;
     text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.35);
 }
 
 .button {
@@ -157,8 +160,9 @@ a {
 }
 
 .button--secondary:hover {
-    border-color: var(--accent-yellow);
-    color: var(--accent-yellow);
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
 }
 
 
@@ -203,10 +207,11 @@ a {
     width: 48px;
     height: 48px;
 
-    border: 2px solid var(--accent-cyan);
+    border: 2px solid var(--accent-green);
     background-color: var(--color-black);
 
     object-fit: cover;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
 }
 
 .brand__text {
@@ -260,7 +265,7 @@ a {
 
     height: 3px;
 
-    background-color: var(--accent-cyan);
+    background-color: var(--accent-green);
 
     transform: scaleX(0);
     transform-origin: left;
@@ -269,7 +274,8 @@ a {
 }
 
 .navigation a:hover {
-    color: var(--accent-cyan);
+    color: var(--accent-green);
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.4);
 }
 
 .navigation a:hover::after {
@@ -343,7 +349,7 @@ a {
 
     display: block;
 
-    background-color: var(--accent-cyan);
+    background-color: var(--accent-green);
 
     transition:
         transform 0.25s ease,
@@ -408,7 +414,7 @@ a {
     background:
         repeating-linear-gradient(
             45deg,
-            var(--accent-cyan) 0 16px,
+            var(--accent-green) 0 16px,
             #000000 16px 32px
         );
 }
@@ -476,12 +482,13 @@ a {
 }
 
 .hero__highlights strong {
-    color: var(--accent-yellow);
+    color: var(--accent-green);
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.3);
 
     font-size: 1.3rem;
 }
 
-/* EFECTO DE DESTELLO NEÓN MULTICOLOR PARA EL TEXTO DE FONDO */
+/* EFECTO DE DESTELLO NEÓN MULTICOLOR CON TOQUE VERDE */
 
 .hero__decoration {
     position: absolute;
@@ -500,7 +507,6 @@ a {
     text-align: right;
     text-transform: uppercase;
 
-    /* Contorno brillante y destello difuminado en varias capas (Multicolor Neón) */
     -webkit-text-stroke: 1.5px var(--accent-cyan);
     text-shadow: 
         0 0 10px rgba(0, 229, 255, 0.6),
@@ -510,21 +516,20 @@ a {
     pointer-events: none;
 }
 
-/* Efecto alternado en las líneas del texto para darle dinamismo multicolor */
 .hero__decoration span:nth-child(2) {
     -webkit-text-stroke: 1.5px var(--accent-magenta);
     text-shadow: 
         0 0 10px rgba(255, 42, 133, 0.6),
-        0 0 25px rgba(255, 215, 0, 0.4),
-        0 0 50px rgba(255, 42, 133, 0.2);
+        0 0 25px var(--accent-green),
+        0 0 50px rgba(57, 255, 20, 0.25);
 }
 
 .hero__decoration span:nth-child(3) {
-    -webkit-text-stroke: 1.5px var(--accent-yellow);
+    -webkit-text-stroke: 1.5px var(--accent-green);
     text-shadow: 
-        0 0 10px rgba(255, 215, 0, 0.6),
+        0 0 10px rgba(57, 255, 20, 0.7),
         0 0 25px rgba(0, 229, 255, 0.4),
-        0 0 50px rgba(255, 215, 0, 0.2);
+        0 0 50px rgba(57, 255, 20, 0.3);
 }
 
 
@@ -538,7 +543,7 @@ a {
     background:
         radial-gradient(
             circle at 90% 5%,
-            rgba(0, 229, 255, 0.05),
+            rgba(57, 255, 20, 0.04),
             transparent 30%
         ),
         var(--color-black-soft);
@@ -554,7 +559,7 @@ a {
     width: 2px;
     height: 100%;
 
-    background-color: rgba(255, 42, 133, 0.2);
+    background-color: rgba(57, 255, 20, 0.25);
 }
 
 .section-heading {
@@ -623,14 +628,15 @@ a {
 .filter-button:hover {
     transform: translateY(-3px);
 
-    border-color: var(--accent-cyan);
-    color: var(--accent-cyan);
+    border-color: var(--accent-green);
+    color: var(--accent-green);
 }
 
 .filter-button.active {
-    border-color: var(--accent-cyan);
-    background-color: var(--accent-cyan);
+    border-color: var(--accent-green);
+    background-color: var(--accent-green);
     color: var(--color-black);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
 }
 
 .products-grid {
@@ -666,7 +672,7 @@ a {
     width: 65px;
     height: 5px;
 
-    background-color: var(--accent-yellow);
+    background-color: var(--accent-green);
 
     transition: width 0.35s ease;
 }
@@ -674,11 +680,11 @@ a {
 .product-card:hover {
     transform: translateY(-9px);
 
-    border-color: rgba(0, 229, 255, 0.4);
+    border-color: rgba(57, 255, 20, 0.45);
 
     box-shadow:
         0 25px 55px rgba(0, 0, 0, 0.45),
-        0 0 30px rgba(0, 229, 255, 0.08);
+        0 0 30px rgba(57, 255, 20, 0.12);
 }
 
 .product-card:hover::before {
@@ -717,15 +723,16 @@ a {
 
     padding: 7px 11px;
 
-    border: 1px solid var(--accent-cyan);
+    border: 1px solid var(--accent-green);
     background-color: rgba(0, 0, 0, 0.88);
-    color: var(--accent-cyan);
+    color: var(--accent-green);
 
     font-size: 0.68rem;
     font-weight: 900;
     letter-spacing: 0.08rem;
     text-transform: uppercase;
     border-radius: 10px;
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
 }
 
 .product-card__content {
@@ -733,7 +740,7 @@ a {
 }
 
 .product-card__category {
-    color: var(--accent-cyan);
+    color: var(--accent-green);
 
     font-size: 0.68rem;
     font-weight: 900;
@@ -803,9 +810,10 @@ a {
 }
 
 .product-card__button:hover {
-    border-color: var(--accent-cyan);
-    background-color: var(--accent-cyan);
+    border-color: var(--accent-green);
+    background-color: var(--accent-green);
     color: var(--color-black);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
 }
 
 .product-card.is-hiding {
@@ -825,7 +833,7 @@ a {
     background:
         linear-gradient(
             135deg,
-            rgba(255, 42, 133, 0.03),
+            rgba(57, 255, 20, 0.03),
             transparent
         ),
         var(--color-black);
@@ -856,13 +864,14 @@ a {
     grid-template-columns: 55px 1fr;
     gap: 18px;
 
-    border-left: 4px solid var(--accent-magenta);
+    border-left: 4px solid var(--accent-green);
     background-color: var(--color-charcoal);
     border-radius: 14px;
 }
 
 .concept-features article > span {
-    color: var(--accent-magenta);
+    color: var(--accent-green);
+    text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
 
     font-family: var(--font-display);
     font-size: 2rem;
@@ -890,16 +899,17 @@ a {
     display: grid;
     place-items: center;
 
-    /* Patrón de cuadros en el poster */
+    /* Patrón de cuadros con toque verde */
     background:
         repeating-linear-gradient(
             -45deg,
-            var(--accent-magenta) 0 16px,
+            var(--accent-green) 0 16px,
             #000000 16px 32px
         );
 
     transform: rotate(2deg);
     border-radius: 20px;
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.15);
 }
 
 .concept-poster__border {
@@ -963,6 +973,7 @@ a {
 
 .contact-box .section-label {
     color: var(--color-black);
+    text-shadow: none;
 }
 
 .contact-box h2 span {
@@ -1003,7 +1014,8 @@ a {
 .footer h3 {
     margin-bottom: 20px;
 
-    color: var(--accent-cyan);
+    color: var(--accent-green);
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.3);
 
     font-size: 0.78rem;
     letter-spacing: 0.14rem;
@@ -1024,7 +1036,36 @@ a {
 }
 
 .footer a:hover {
-    color: var(--accent-cyan);
+    color: var(--accent-green);
+}
+
+.footer-link-button {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-top: 4px;
+
+    border: 1px solid rgba(57, 255, 20, 0.4);
+    background-color: rgba(57, 255, 20, 0.08);
+    color: var(--accent-green) !important;
+    border-radius: 10px;
+
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 0.78rem !important;
+
+    transition: 
+        background-color 0.25s ease, 
+        border-color 0.25s ease, 
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.footer-link-button:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-green);
+    background-color: var(--accent-green);
+    color: var(--color-black) !important;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
 }
 
 .footer-brand strong {
@@ -1105,13 +1146,13 @@ a {
 
     overflow: hidden;
 
-    border: 1px solid rgba(0, 229, 255, 0.4);
+    border: 1px solid rgba(57, 255, 20, 0.4);
     background-color: var(--color-black-soft);
     border-radius: 20px;
 
     box-shadow:
         0 35px 100px rgba(0, 0, 0, 0.7),
-        0 0 40px rgba(0, 229, 255, 0.1);
+        0 0 40px rgba(57, 255, 20, 0.1);
 
     transform: translateY(25px) scale(0.97);
 
@@ -1131,9 +1172,9 @@ a {
     width: 42px;
     height: 42px;
 
-    border: 1px solid var(--accent-cyan);
+    border: 1px solid var(--accent-green);
     background-color: var(--color-black);
-    color: var(--accent-cyan);
+    color: var(--accent-green);
     border-radius: 14px;
 
     font-size: 1.7rem;
@@ -1165,7 +1206,7 @@ a {
 
     scrollbar-width: thin;
     scrollbar-color:
-        var(--accent-cyan)
+        var(--accent-green)
         var(--color-charcoal);
 }
 
@@ -1228,7 +1269,7 @@ a {
 
     display: block;
 
-    color: var(--accent-cyan);
+    color: var(--accent-green);
 
     font-size: 0.75rem;
     font-weight: 900;
@@ -1264,16 +1305,16 @@ a {
 }
 
 .option-label:hover {
-    border-color: rgba(0, 229, 255, 0.4);
+    border-color: rgba(57, 255, 20, 0.4);
 }
 
 .option-label:has(input:checked) {
-    border-color: var(--accent-cyan);
-    background-color: rgba(0, 229, 255, 0.1);
+    border-color: var(--accent-green);
+    background-color: rgba(57, 255, 20, 0.1);
 }
 
 .option-label input {
-    accent-color: var(--accent-cyan);
+    accent-color: var(--accent-green);
 }
 
 .option-label span {
@@ -1313,7 +1354,7 @@ a {
     width: 37px;
     height: 37px;
 
-    border: 1px solid var(--accent-cyan);
+    border: 1px solid var(--accent-green);
     background-color: var(--color-charcoal);
     border-radius: 12px;
 
@@ -1345,7 +1386,7 @@ a {
 }
 
 .notes-field textarea:focus {
-    border-color: var(--accent-cyan);
+    border-color: var(--accent-green);
 }
 
 .modal__add-button {
@@ -1395,7 +1436,7 @@ a {
         minmax(110px, 1fr)
         auto;
 
-    border-left: 1px solid rgba(0, 229, 255, 0.4);
+    border-left: 1px solid rgba(57, 255, 20, 0.4);
     background-color: var(--color-black-soft);
 
     box-shadow: -30px 0 80px rgba(0, 0, 0, 0.6);
@@ -1433,9 +1474,9 @@ a {
     width: 42px;
     height: 42px;
 
-    border: 1px solid var(--accent-cyan);
+    border: 1px solid var(--accent-green);
     background-color: transparent;
-    color: var(--accent-cyan);
+    color: var(--accent-green);
     border-radius: 14px;
 
     font-size: 1.6rem;
@@ -1609,7 +1650,7 @@ a {
 }
 
 .cart-item__quantity-controls button:hover {
-    background-color: var(--accent-cyan);
+    background-color: var(--accent-green);
     color: var(--color-black);
 }
 
@@ -1648,12 +1689,12 @@ a {
 }
 
 .cart-item__edit {
-    color: var(--accent-cyan);
+    color: var(--accent-green);
 }
 
 .cart-item__edit:hover {
-    border-color: var(--accent-cyan);
-    background-color: var(--accent-cyan);
+    border-color: var(--accent-green);
+    background-color: var(--accent-green);
     color: var(--color-black);
 }
 
@@ -1756,7 +1797,7 @@ a {
 
     padding: 15px 19px;
 
-    border-left: 5px solid var(--accent-cyan);
+    border-left: 5px solid var(--accent-green);
     background-color: var(--color-charcoal);
     color: var(--color-white);
     border-radius: 14px;
@@ -2119,14 +2160,15 @@ a {
 .meal-switcher__button:hover {
     transform: translateY(-3px);
 
-    border-color: var(--accent-cyan);
-    color: var(--accent-cyan);
+    border-color: var(--accent-green);
+    color: var(--accent-green);
 }
 
 .meal-switcher__button.active {
-    border-color: var(--accent-cyan);
-    background-color: var(--accent-cyan);
+    border-color: var(--accent-green);
+    background-color: var(--accent-green);
     color: var(--color-black);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
 }
 
 .meal-switcher__button.is-orderable::after {
@@ -2134,20 +2176,21 @@ a {
 
     padding: 4px 6px;
 
-    background-color: #1fa857;
-    color: #ffffff;
+    background-color: var(--accent-green);
+    color: var(--color-black);
     border-radius: 6px;
 
     font-size: 0.52rem;
     letter-spacing: 0.05rem;
+    font-weight: 900;
 }
 
 .schedule-status {
     margin-bottom: 24px;
     padding: 13px 15px;
 
-    border-left: 3px solid var(--accent-cyan);
-    background-color: rgba(0, 229, 255, 0.06);
+    border-left: 3px solid var(--accent-green);
+    background-color: rgba(57, 255, 20, 0.05);
     color: #aaa;
     border-radius: 0 14px 14px 0;
 
@@ -2195,9 +2238,9 @@ a {
     max-width: 82%;
     padding: 10px 13px;
 
-    border: 1px solid var(--accent-cyan);
+    border: 1px solid var(--accent-green);
     background-color: rgba(0, 0, 0, 0.92);
-    color: var(--accent-cyan);
+    color: var(--accent-green);
     border-radius: 12px;
 
     font-size: 0.72rem;
@@ -2226,8 +2269,8 @@ a {
     align-items: center;
     justify-content: center;
 
-    border: 1px dashed rgba(0, 229, 255, 0.4);
-    background-color: rgba(0, 229, 255, 0.03);
+    border: 1px dashed rgba(57, 255, 20, 0.4);
+    background-color: rgba(57, 255, 20, 0.03);
     border-radius: 18px;
 
     text-align: center;
@@ -2316,14 +2359,15 @@ a {
 .payment-option:hover {
     transform: translateY(-2px);
 
-    border-color: var(--accent-cyan);
+    border-color: var(--accent-green);
 }
 
 .fulfillment-option:has(input:checked),
 .payment-option:has(input:checked) {
-    border-color: var(--accent-cyan);
-    background-color: var(--accent-cyan);
+    border-color: var(--accent-green);
+    background-color: var(--accent-green);
     color: var(--color-black);
+    box-shadow: 0 0 12px rgba(57, 255, 20, 0.25);
 }
 
 .fulfillment-option input,
@@ -2383,10 +2427,10 @@ a {
 
 .checkout-field input:focus,
 .checkout-field textarea:focus {
-    border-color: var(--accent-cyan);
+    border-color: var(--accent-green);
 
     box-shadow:
-        0 0 0 3px rgba(0, 229, 255, 0.12);
+        0 0 0 3px rgba(57, 255, 20, 0.12);
 }
 
 .checkout-field small {
@@ -2473,14 +2517,14 @@ a {
     align-items: center;
     gap: 12px;
 
-    border: 1px solid var(--accent-cyan);
-    background-color: var(--accent-cyan);
+    border: 1px solid var(--accent-green);
+    background-color: var(--accent-green);
     color: var(--color-black);
     border-radius: 18px;
 
     box-shadow:
         0 20px 55px rgba(0, 0, 0, 0.5),
-        0 0 28px rgba(0, 229, 255, 0.2);
+        0 0 28px rgba(57, 255, 20, 0.25);
 
     cursor: pointer;
 
@@ -2495,7 +2539,7 @@ a {
 
     box-shadow:
         0 25px 65px rgba(0, 0, 0, 0.6),
-        0 0 35px rgba(0, 229, 255, 0.28);
+        0 0 35px rgba(57, 255, 20, 0.35);
 }
 
 .floating-cart__icon {
@@ -2554,7 +2598,7 @@ a {
 .local-service-note {
     padding: 14px 15px;
     border: 1px solid var(--border-dark);
-    border-left: 3px solid var(--accent-cyan);
+    border-left: 3px solid var(--accent-green);
     border-radius: 14px;
     background-color: var(--color-charcoal);
 }
@@ -2618,10 +2662,10 @@ a {
     display: inline-grid;
     place-items: center;
 
-    border: 1px solid var(--accent-cyan);
+    border: 1px solid var(--accent-green);
     border-radius: 50%;
 
-    color: var(--accent-cyan);
+    color: var(--accent-green);
 
     font-size: 0.9rem;
     font-weight: 900;
@@ -2644,16 +2688,16 @@ a {
 
 .checkout-toggle:hover .checkout-toggle__handle {
     width: 64px;
-    background-color: var(--accent-cyan);
+    background-color: var(--accent-green);
 }
 
 .checkout-toggle:hover .checkout-toggle__arrow {
-    background-color: var(--accent-cyan);
+    background-color: var(--accent-green);
     color: var(--color-black);
 }
 
 .checkout-toggle.is-collapsed .checkout-toggle__handle {
-    background-color: var(--accent-cyan);
+    background-color: var(--accent-green);
 }
 
 .checkout-toggle.is-collapsed .checkout-toggle__arrow {
@@ -2707,13 +2751,13 @@ a {
     align-items: center;
 
     border: 1px solid var(--border-dark);
-    border-left: 4px solid var(--accent-cyan);
+    border-left: 4px solid var(--accent-green);
     border-radius: 18px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(0, 229, 255, 0.05),
+            rgba(57, 255, 20, 0.05),
             rgba(255, 255, 255, 0.015)
         ),
         var(--color-charcoal);
@@ -2740,8 +2784,8 @@ a {
 }
 
 .restaurant-hours-card__dot.is-open {
-    background-color: #39d353;
-    box-shadow: 0 0 18px rgba(57, 211, 83, 0.5);
+    background-color: var(--accent-green);
+    box-shadow: 0 0 18px rgba(57, 255, 20, 0.6);
 }
 
 .restaurant-hours-card__dot.is-closed {
@@ -2752,7 +2796,7 @@ a {
 .restaurant-hours-card__eyebrow {
     margin-bottom: 5px;
 
-    color: var(--accent-cyan);
+    color: var(--accent-green);
 
     font-size: 0.68rem;
     font-weight: 900;
@@ -2877,17 +2921,17 @@ a {
 }
 
 .ingredient-option:hover {
-    border-color: var(--accent-cyan);
+    border-color: var(--accent-green);
     transform: translateY(-1px);
 }
 
 .ingredient-option.is-selected {
-    border-color: rgba(0, 229, 255, 0.6);
+    border-color: rgba(57, 255, 20, 0.6);
     background:
         linear-gradient(
             135deg,
-            rgba(0, 229, 255, 0.1),
-            rgba(0, 229, 255, 0.02)
+            rgba(57, 255, 20, 0.1),
+            rgba(57, 255, 20, 0.02)
         ),
         rgba(0, 0, 0, 0.8);
 }
@@ -2935,8 +2979,9 @@ a {
 
 .ingredient-option.is-selected
 .ingredient-option__switch {
-    border-color: var(--accent-cyan);
-    background-color: var(--accent-cyan);
+    border-color: var(--accent-green);
+    background-color: var(--accent-green);
+    box-shadow: 0 0 8px rgba(57, 255, 20, 0.5);
 }
 
 .ingredient-option.is-selected
@@ -2964,7 +3009,7 @@ a {
 
 .ingredient-option.is-selected
 .ingredient-option__status {
-    color: var(--accent-cyan);
+    color: var(--accent-green);
 }
 
 #extraOptions {

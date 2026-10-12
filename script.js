@@ -188,7 +188,7 @@ const products = [
         available: true,
         price: 95,
         badge: "Mini 4 pzas",
-        image: "assets/img/burger2.webp",
+        image: "assets/img/babyburgers.JPG",
         description: "4 piezas de hamburguesas mini con carne mixta preparada en casa y queso americano.",
         ingredients: [
             { name: "4 Mini Carnes mixtas", default: true },
@@ -216,7 +216,7 @@ const products = [
         available: true,
         price: 110,
         badge: "Especial",
-        image: "assets/img/burger3.webp",
+        image: "assets/img/rickhardchoice.JPG",
         description: "Carne mixta preparada en casa, tocino, queso Oaxaca, aros de cebolla y queso americano.",
         ingredients: [
             { name: "Carne mixta", default: true },
@@ -247,7 +247,7 @@ const products = [
         available: true,
         price: 105,
         badge: "Tropical",
-        image: "assets/img/burger1.webp",
+        image: "assets/img/hawaiana.JPG",
         description: "Carne mixta preparada en casa, tocino, queso Oaxaca, piña fresca, queso americano y jamón.",
         ingredients: [
             { name: "Carne mixta", default: true },
@@ -277,7 +277,7 @@ const products = [
         available: true,
         price: 95,
         badge: "Clásica",
-        image: "assets/img/burger2.webp",
+        image: "assets/img/Sencilla.JPG",
         description: "Carne mixta preparada en casa, tocino y queso americano.",
         ingredients: [
             { name: "Carne mixta", default: true },
@@ -304,7 +304,7 @@ const products = [
         available: true,
         price: 100,
         badge: "Crujiente",
-        image: "assets/img/burger3.webp",
+        image: "assets/img/pollo.JPG",
         description: "Pechuga de pollo empanizada, tocino y queso americano.",
         ingredients: [
             { name: "Pechuga de pollo empanizada", default: true },
@@ -335,7 +335,7 @@ const products = [
         available: true,
         price: 70,
         badge: "Popular",
-        image: "assets/img/alitas1.webp",
+        image: "assets/img/hwaiano.JPG",
         description: "Salchicha jumbo, tocino, queso Oaxaca y piña fresca.",
         ingredients: [
             { name: "Salchicha Jumbo", default: true },
@@ -362,7 +362,7 @@ const products = [
         available: true,
         price: 60,
         badge: "Clásico",
-        image: "assets/img/alitas2.webp",
+        image: "assets/img/sencillo.JPG",
         description: "Salchicha jumbo y tocino crujiente.",
         ingredients: [
             { name: "Salchicha Jumbo", default: true },
@@ -391,7 +391,7 @@ const products = [
         available: true,
         price: 80,
         badge: "5 piezas",
-        image: "assets/img/alitas1.webp",
+        image: "assets/img/Alitas.JPG",
         description: "5 piezas de alitas adobadas preparadas al gusto con salsa inglesa, jugo Maggi, BBQ, tajín y salsa.",
         ingredients: [
             { name: "5 Alitas adobadas", default: true },
@@ -418,7 +418,7 @@ const products = [
         available: true,
         price: 80,
         badge: "Crujientes",
-        image: "assets/img/boneless1.webp",
+        image: "assets/img/Boneless.JPG",
         description: "Trocitos de pollo empanizados bañados en tu salsa favorita.",
         ingredients: [
             { name: "Boneless de pollo", default: true },
@@ -510,7 +510,7 @@ const products = [
         available: true,
         price: 70,
         badge: "Especiales",
-        image: "assets/img/papas2.webp",
+        image: "assets/img/PapasGajo.JPG",
         description: "Orden de papas de gajo sazonadas.",
         ingredients: [
             { name: "Papas de gajo", default: true }
@@ -530,7 +530,7 @@ const products = [
         available: true,
         price: 70,
         badge: "Crujientes",
-        image: "assets/img/papas1.webp",
+        image: "assets/img/Aroscebolla.JPG",
         description: "Orden de aros de cebolla dorados.",
         ingredients: [
             { name: "Aros de cebolla", default: true }
@@ -572,7 +572,7 @@ const products = [
         available: true,
         price: 30,
         badge: "Dulces",
-        image: "assets/img/brownie.webp",
+        image: "assets/img/Platanos.JPG",
         description: "Plátanos fritos doraditos.",
         ingredients: [
             { name: "Plátanos", default: true }
