@@ -3028,3 +3028,219 @@ a {
         grid-template-columns: 1fr;
     }
 }
+/* Ajustes de selección exclusiva y accesibilidad */
+.option-label:has(input[type="radio"]:checked) { border-color: var(--accent-yellow); background: rgba(255,215,0,.09); }
+.option-label input[type="radio"] { accent-color: var(--accent-yellow); width: 19px; height: 19px; flex-shrink: 0; }
+.option-label:focus-within { outline: 2px solid var(--accent-yellow); outline-offset: 2px; }
+[hidden] { display: none !important; }
+
+
+/* ===============================================================
+   UPPSALA / RETRO NEON REFINEMENT — edición sobre el CSS original
+   Paleta solicitada: negro, blanco, magenta, cian, amarillo y pastel.
+   Mantiene todos los componentes y la responsividad existentes.
+   =============================================================== */
+:root {
+    --color-black: #000000;
+    --color-black-soft: #0c0c11;
+    --color-charcoal: #17171e;
+    --color-asphalt: #24242c;
+    --color-white: #ffffff;
+    --accent-magenta: #ff00ff;
+    --accent-cyan: #00ffff;
+    --accent-yellow: #ffd700;
+    --accent-green: #00ffff; /* alias de compatibilidad para estilos antiguos */
+    --accent-purple: #6a0dad;
+    --accent-pastel: #add8e6;
+    --border-dark: rgba(255,255,255,.14);
+    --border-yellow: rgba(255,215,0,.3);
+}
+body {
+    background: #09090d;
+    color: #fff;
+}
+::selection { background: #ff00ff; color: #08080a; }
+:focus-visible { outline: 2px solid var(--accent-cyan); outline-offset: 3px; }
+.site-header { z-index: 80; }
+.navbar {
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.2);
+    background: rgba(10,10,15,.91);
+    box-shadow: 0 12px 45px rgba(0,0,0,.45);
+}
+.brand__logo {
+    border-color: var(--accent-magenta);
+    border-radius: 12px;
+    box-shadow: 0 0 18px rgba(255,0,255,.2);
+}
+.navigation a::after { background: var(--accent-magenta); }
+.navigation a:hover { color: var(--accent-pastel); text-shadow: none; }
+.section-label {
+    color: var(--accent-cyan);
+    text-shadow: none;
+    letter-spacing: .2rem;
+}
+.hero {
+    isolation: isolate;
+    min-height: min(850px, 100svh);
+}
+.hero__overlay {
+    background:
+        linear-gradient(90deg, rgba(6,5,10,.97) 0%, rgba(6,5,10,.83) 42%, rgba(6,5,10,.25) 85%),
+        linear-gradient(0deg, rgba(5,5,10,.92), transparent 55%);
+}
+.hero::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 78% 50%, rgba(255,0,255,.12), transparent 37%);
+}
+.hero::after {
+    height: 15px;
+    background-color: #fff;
+    background-image: conic-gradient(#111 25%, #fff 0 50%, #111 0 75%, #fff 0);
+    background-size: 30px 30px;
+}
+.hero h1 { letter-spacing: -.045em; line-height: .88; }
+.hero h1 span {
+    color: var(--accent-magenta);
+    text-shadow: 0 0 32px rgba(255,0,255,.28);
+}
+.hero__highlights strong { color: var(--accent-pastel); text-shadow: none; }
+.hero__decoration {
+    opacity: .32;
+    -webkit-text-stroke: 1.5px var(--accent-cyan);
+    text-shadow: 0 0 16px rgba(0,255,255,.18);
+}
+.hero__decoration span:nth-child(2) {
+    -webkit-text-stroke: 1.5px var(--accent-magenta);
+    text-shadow: 0 0 18px rgba(255,0,255,.18);
+}
+.hero__decoration span:nth-child(3) {
+    -webkit-text-stroke: 1.5px var(--accent-pastel);
+    text-shadow: none;
+}
+.button--primary {
+    background: var(--accent-magenta);
+    color: #100a12;
+    box-shadow: 0 12px 34px rgba(255,0,255,.19);
+}
+.button--primary:hover { background: #ff66fa; color: #09090c; }
+.button--secondary:hover {
+    color: var(--accent-cyan);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 14px rgba(0,255,255,.12);
+}
+.menu-section {
+    background:
+        radial-gradient(circle at 92% 8%, rgba(106,13,173,.13), transparent 36%),
+        #0b0b11;
+}
+.menu-section::before { background: rgba(255,0,255,.18); }
+.section-heading h2 span, .concept-content h2 span, .contact-box h2 span {
+    color: var(--accent-magenta);
+}
+.meal-switcher__button {
+    background: #171720;
+    border-radius: 12px;
+    color: #dad9e5;
+}
+.meal-switcher__button:hover { border-color: var(--accent-cyan); color: #fff; }
+.meal-switcher__button.active {
+    background: var(--accent-magenta);
+    border-color: var(--accent-magenta);
+    color: #09090d;
+    box-shadow: 0 6px 22px rgba(255,0,255,.15);
+}
+.meal-switcher__button.is-orderable::after {
+    background: var(--accent-cyan);
+    color: #080808;
+}
+.filter-button {
+    border-radius: 100px;
+    background: #1b1b25;
+    color: #d9d9e2;
+}
+.filter-button:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+.filter-button.active {
+    border-color: var(--accent-cyan);
+    background: var(--accent-cyan);
+    color: #07070a;
+    box-shadow: none;
+}
+.products-grid { gap: 22px; }
+.product-card {
+    background: #17171e;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.12);
+}
+.product-card::before { background: var(--accent-magenta); }
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,0,255,.42);
+    box-shadow: 0 20px 44px rgba(0,0,0,.38), 0 0 18px rgba(255,0,255,.09);
+}
+.product-card__badge {
+    background: rgba(8,8,14,.92);
+    border-color: rgba(0,255,255,.5);
+    color: var(--accent-cyan);
+    box-shadow: none;
+}
+.product-card__image-wrapper { background: #25202e; }
+.product-card__price { color: var(--accent-yellow); }
+.product-card__button { transition: background-color .2s, color .2s, transform .2s; }
+.product-card__button:not(:disabled):hover { transform: translateY(-2px); }
+.option-label:has(input[type="radio"]:checked) {
+    border-color: var(--accent-magenta);
+    background: rgba(255,0,255,.075);
+}
+.option-label input[type="radio"] { accent-color: var(--accent-magenta); }
+.option-label:focus-within { outline-color: var(--accent-cyan); }
+.ingredient-option.is-selected .ingredient-option__switch {
+    border-color: var(--accent-cyan);
+    background: var(--accent-cyan);
+    box-shadow: 0 0 8px rgba(0,255,255,.2);
+}
+.ingredient-option.is-selected .ingredient-option__status { color: var(--accent-pastel); }
+.schedule-status {
+    border-left: 3px solid var(--accent-cyan);
+}
+.demo-prices-note {
+    display: block;
+    margin-top: 8px;
+    color: #ffd700;
+    font-size: .84rem;
+    font-weight: 700;
+}
+.contact-section {
+    position: relative;
+    isolation: isolate;
+}
+.contact-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: .08;
+    pointer-events: none;
+    background: repeating-linear-gradient(135deg, #fff 0 16px, #000 16px 32px);
+}
+@media (max-width: 720px) {
+    .navbar { border-radius: 14px; }
+    .hero { min-height: 740px; padding-top: 150px; }
+    .hero__decoration { opacity: .13; }
+    .hero h1 { font-size: clamp(3.5rem, 15vw, 5.5rem); }
+    .meal-switcher { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .meal-switcher__button { padding: 10px 7px; font-size: .75rem; }
+    .product-card:hover { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

@@ -4,6 +4,9 @@
 
 const WHATSAPP_NUMBER = "527206325940";
 
+// Cambia a false al publicar el sitio para respetar horarios reales.
+const MODO_PRUEBAS = true;
+
 // Días de la semana: 0 = Domingo, 1 = Lunes, 2 = Martes, 3 = Miércoles, 4 = Jueves, 5 = Viernes, 6 = Sábado
 const MENU_SCHEDULE = {
     desayuno: {
@@ -55,6 +58,7 @@ function formatHourLabel(timeString) {
 
 
 function getRestaurantOpenState() {
+    if (MODO_PRUEBAS) return { isOpen: true, period: "comida", closesAt: "23:00" };
     const now = new Date();
     const currentDay = now.getDay();
     const currentMinutes = getCurrentMinutes();
@@ -127,10 +131,10 @@ function updateRestaurantHoursCard() {
                 ? "Desayunos disponibles"
                 : "Comida y parrilla disponible";
 
-        restaurantStatusLabel.textContent = "ABIERTO AHORA";
+        restaurantStatusLabel.textContent = MODO_PRUEBAS ? "MODO DE PRUEBAS" : "ABIERTO AHORA";
         restaurantStatusHeadline.textContent = activeLabel;
         restaurantStatusMessage.textContent =
-            `Puedes ordenar hasta las ${formatHourLabel(state.closesAt)}.`;
+            MODO_PRUEBAS ? "Prueba el menú sin restricciones de horario." : `Puedes ordenar hasta las ${formatHourLabel(state.closesAt)}.`;
         return;
     }
 
@@ -144,6 +148,120 @@ function updateRestaurantHoursCard() {
 /* BASE DE DATOS DEL MENÚ - UPPSALA GRILLED BURGER */
 
 const products = [
+
+    /* DESAYUNOS - PROPUESTAS Y PRECIOS POR CONFIRMAR */
+    {
+        id: 22,
+        name: "Chilaquiles Verdes",
+        category: "desayunos",
+        categoryLabel: "Desayunos · Propuesta",
+        mealPeriod: "desayuno",
+        available: true,
+        price: 85, // PRECIO PROVISIONAL: confirmar con la clienta
+        badge: "Clásico mañanero · DEMO",
+        image: "assets/img/desayunos-demo.svg",
+        description: "Totopos crujientes bañados en salsa verde, crema, queso fresco y cebolla.",
+        ingredients: [{"name": "Totopos", "default": true}, {"name": "Salsa verde", "default": true}, {"name": "Crema", "default": true}, {"name": "Queso fresco", "default": true}, {"name": "Cebolla", "default": true}],
+        options: ["Orden individual"],
+        extras: [{"name": "Huevo estrellado", "price": 18}, {"name": "Pollo deshebrado", "price": 30}, {"name": "Aguacate", "price": 20}]
+    },
+
+    {
+        id: 23,
+        name: "Chilaquiles Rojos",
+        category: "desayunos",
+        categoryLabel: "Desayunos · Propuesta",
+        mealPeriod: "desayuno",
+        available: true,
+        price: 85, // PRECIO PROVISIONAL: confirmar con la clienta
+        badge: "Picositos · DEMO",
+        image: "assets/img/desayunos-demo.svg",
+        description: "Chilaquiles con salsa roja de la casa, crema, queso fresco y cebolla.",
+        ingredients: [{"name": "Totopos", "default": true}, {"name": "Salsa roja", "default": true}, {"name": "Crema", "default": true}, {"name": "Queso fresco", "default": true}, {"name": "Cebolla", "default": true}],
+        options: ["Orden individual"],
+        extras: [{"name": "Huevo estrellado", "price": 18}, {"name": "Pollo deshebrado", "price": 30}, {"name": "Aguacate", "price": 20}]
+    },
+
+    {
+        id: 24,
+        name: "Chilaquiles Rellenos de Queso",
+        category: "desayunos",
+        categoryLabel: "Desayunos · Propuesta",
+        mealPeriod: "desayuno",
+        available: true,
+        price: 115, // PRECIO PROVISIONAL: confirmar con la clienta
+        badge: "Especial · DEMO",
+        image: "assets/img/desayunos-demo.svg",
+        description: "Crujientes triángulos de tortilla rellenos de queso, cubiertos con salsa, crema y queso fresco.",
+        ingredients: [{"name": "Tortilla rellena de queso", "default": true}, {"name": "Crema", "default": true}, {"name": "Queso fresco", "default": true}, {"name": "Cebolla", "default": true}],
+        options: ["Con salsa verde", "Con salsa roja"],
+        extras: [{"name": "Huevo estrellado", "price": 18}, {"name": "Pollo deshebrado", "price": 30}]
+    },
+
+    {
+        id: 25,
+        name: "Huevos al Gusto",
+        category: "desayunos",
+        categoryLabel: "Desayunos · Propuesta",
+        mealPeriod: "desayuno",
+        available: true,
+        price: 80, // PRECIO PROVISIONAL: confirmar con la clienta
+        badge: "A tu estilo · DEMO",
+        image: "assets/img/desayunos-demo.svg",
+        description: "Dos huevos preparados a tu gusto, acompañados de frijoles y tortillas.",
+        ingredients: [{"name": "Dos huevos", "default": true}, {"name": "Frijoles", "default": true}, {"name": "Tortillas", "default": true}],
+        options: ["Revueltos", "Estrellados", "A la mexicana"],
+        extras: [{"name": "Tocino", "price": 20}, {"name": "Jamón", "price": 15}, {"name": "Queso", "price": 15}]
+    },
+
+    {
+        id: 26,
+        name: "Molletes Gratinados",
+        category: "desayunos",
+        categoryLabel: "Desayunos · Propuesta",
+        mealPeriod: "desayuno",
+        available: true,
+        price: 75, // PRECIO PROVISIONAL: confirmar con la clienta
+        badge: "Bien doraditos · DEMO",
+        image: "assets/img/desayunos-demo.svg",
+        description: "Pan tostado con frijoles y queso gratinado, servido con pico de gallo.",
+        ingredients: [{"name": "Pan", "default": true}, {"name": "Frijoles", "default": true}, {"name": "Queso gratinado", "default": true}, {"name": "Pico de gallo", "default": true}],
+        options: ["Sola ($75)"],
+        extras: [{"name": "Chorizo", "price": 20}, {"name": "Tocino", "price": 20}]
+    },
+
+    {
+        id: 27,
+        name: "Enchiladas Suizas",
+        category: "desayunos",
+        categoryLabel: "Desayunos · Propuesta",
+        mealPeriod: "desayuno",
+        available: true,
+        price: 105, // PRECIO PROVISIONAL: confirmar con la clienta
+        badge: "Cremosas · DEMO",
+        image: "assets/img/desayunos-demo.svg",
+        description: "Tortillas rellenas de pollo con salsa verde cremosa y queso gratinado.",
+        ingredients: [{"name": "Tortillas", "default": true}, {"name": "Pollo", "default": true}, {"name": "Salsa verde cremosa", "default": true}, {"name": "Queso gratinado", "default": true}],
+        options: ["Salsa verde", "Salsa roja"],
+        extras: [{"name": "Pollo extra", "price": 30}, {"name": "Aguacate", "price": 20}]
+    },
+
+    {
+        id: 28,
+        name: "Hot Cakes de la Casa",
+        category: "desayunos",
+        categoryLabel: "Desayunos · Propuesta",
+        mealPeriod: "desayuno",
+        available: true,
+        price: 80, // PRECIO PROVISIONAL: confirmar con la clienta
+        badge: "Dulce despertar · DEMO",
+        image: "assets/img/desayunos-demo.svg",
+        description: "Tres hot cakes esponjosos con mantequilla y miel para comenzar el día.",
+        ingredients: [{"name": "Tres hot cakes", "default": true}, {"name": "Mantequilla", "default": true}, {"name": "Miel", "default": true}],
+        options: ["Sola ($80)"],
+        extras: [{"name": "Plátano", "price": 15}, {"name": "Fresas", "price": 20}, {"name": "Chocolate", "price": 15}]
+    },
+
 
     /* =========================
        HAMBURGUESAS
@@ -188,7 +306,7 @@ const products = [
         available: true,
         price: 95,
         badge: "Mini 4 pzas",
-        image: "assets/img/babyburgers.JPG",
+        image: "assets/img/Babyburgers.JPG",
         description: "4 piezas de hamburguesas mini con carne mixta preparada en casa y queso americano.",
         ingredients: [
             { name: "4 Mini Carnes mixtas", default: true },
@@ -216,7 +334,7 @@ const products = [
         available: true,
         price: 110,
         badge: "Especial",
-        image: "assets/img/rickhardchoice.JPG",
+        image: "assets/img/RickHardChoice.JPG",
         description: "Carne mixta preparada en casa, tocino, queso Oaxaca, aros de cebolla y queso americano.",
         ingredients: [
             { name: "Carne mixta", default: true },
@@ -596,7 +714,7 @@ const products = [
         available: true,
         price: 25,
         badge: "Frío",
-        image: "assets/img/limonada1.webp",
+        image: "assets/img/cocacola.webp",
         description: "Refresco presentación 400ml.",
         ingredients: [
             { name: "Refresco", default: true }
@@ -616,7 +734,7 @@ const products = [
         available: true,
         price: 35,
         badge: "Grande",
-        image: "assets/img/limonada1.webp",
+        image: "assets/img/cocacola.webp",
         description: "Refresco presentación 600ml.",
         ingredients: [
             { name: "Refresco", default: true }
@@ -688,6 +806,8 @@ const modalProductName = document.querySelector("#modalProductName");
 const modalProductDescription = document.querySelector("#modalProductDescription");
 const modalProductPrice = document.querySelector("#modalProductPrice");
 const regularOptions = document.querySelector("#regularOptions");
+const breadOptionsGroup = document.querySelector("#breadOptionsGroup");
+const breadOptions = document.querySelector("#breadOptions");
 const productBuilderGroup = document.querySelector("#productBuilderGroup");
 const productIngredientOptions = document.querySelector("#productIngredientOptions");
 const extraOptions = document.querySelector("#extraOptions");
@@ -832,6 +952,7 @@ function isPeriodActiveToday(periodKey) {
 
 
 function getCurrentServicePeriod() {
+    if (MODO_PRUEBAS) return "comida";
     if (isPeriodActiveToday("desayuno")) {
         return "desayuno";
     }
@@ -849,6 +970,7 @@ function getPeriodAvailabilityText(period) {
 
 
 function isProductOrderable(product) {
+    if (MODO_PRUEBAS) return product.available !== false;
     return (
         product.available !== false &&
         getCurrentServicePeriod() === product.mealPeriod
@@ -857,6 +979,7 @@ function isProductOrderable(product) {
 
 
 function getProductAvailabilityLabel(product) {
+    if (MODO_PRUEBAS && product.available !== false) return "";
     if (product.available === false) {
         return "Agotado";
     }
@@ -876,6 +999,15 @@ function getProductAvailabilityLabel(product) {
 
 
 function updateScheduleInterface() {
+    if (MODO_PRUEBAS) {
+        menuScheduleStatus.innerHTML = "<strong>Modo de pruebas activo.</strong> Puedes probar el carrito y personalizar productos a cualquier hora. Los horarios reales no se han modificado.";
+        if (currentMealPeriod === "desayuno") {
+            menuScheduleStatus.innerHTML += ' <span class="demo-prices-note">☀️ Desayunos de ejemplo: nombres, recetas y precios sujetos a aprobación.</span>';
+        }
+        menuFilters.hidden = currentMealPeriod === "desayuno";
+        mealPeriodButtons.forEach(button => button.classList.toggle("active", button.dataset.mealPeriod === currentMealPeriod));
+        return;
+    }
     const activePeriod = getCurrentServicePeriod();
 
     mealPeriodButtons.forEach((button) => {
@@ -903,6 +1035,9 @@ function updateScheduleInterface() {
         `;
     }
 
+    if (currentMealPeriod === "desayuno") {
+        menuScheduleStatus.innerHTML += ' <span class="demo-prices-note">☀️ Menú de desayunos en desarrollo. Precios por confirmar.</span>';
+    }
     menuFilters.hidden = currentMealPeriod === "desayuno";
 }
 
@@ -1085,6 +1220,7 @@ function openProductModal(product, cartItem = null) {
     productNotes.value = cartItem?.notes || "";
 
     renderProductIngredients(product, cartItem);
+    renderBreadOptions(product, cartItem);
     renderRegularOptions(product.options);
     renderExtraOptions(product.extras);
 
@@ -1232,31 +1368,54 @@ function getProductIngredientChanges() {
 
 function renderRegularOptions(options) {
     regularOptions.innerHTML = "";
-
-    if (!options.length) {
-        regularOptions.innerHTML = `
-            <p class="no-options">Este producto no requiere modificaciones adicionales.</p>
-        `;
+    if (!options?.length) {
+        regularOptions.innerHTML = '<p class="no-options">Sin opciones adicionales.</p>';
         return;
     }
-
     options.forEach((option, index) => {
         const label = document.createElement("label");
         label.className = "option-label";
-
-        label.innerHTML = `
-            <span>${option}</span>
-            <input
-                type="checkbox"
-                name="regularOption"
-                value="${option}"
-                id="regular-option-${index}"
-            >
-        `;
+        const name = document.createElement("span");
+        name.textContent = option;
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "regularOption";
+        input.value = option;
+        input.checked = index === 0;
+        label.append(name, input);
         regularOptions.append(label);
     });
 }
 
+function renderBreadOptions(product, cartItem = null) {
+    if (!breadOptionsGroup || !breadOptions) return;
+    const isBurger = product.category === "hamburguesas";
+    breadOptionsGroup.hidden = !isBurger;
+    breadOptions.innerHTML = "";
+    if (!isBurger) return;
+    const breads = [
+        { name: "Pan de finas hierbas", price: 0 },
+        { name: "Pan de queso", price: 0 },
+        { name: "Pan tipo croissant", price: 0 },
+        { name: "Pan brioche", price: 40 }
+    ];
+    breads.forEach((bread, index) => {
+        const label = document.createElement("label");
+        label.className = "option-label";
+        const name = document.createElement("span");
+        name.textContent = bread.name;
+        const price = document.createElement("strong");
+        price.textContent = bread.price ? `+${formatCurrency(bread.price)}` : "Incluido";
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = "breadOption";
+        input.value = bread.name;
+        input.dataset.price = bread.price;
+        input.checked = cartItem?.bread ? cartItem.bread === bread.name : index === 0;
+        label.append(name, price, input);
+        breadOptions.append(label);
+    });
+}
 
 function renderExtraOptions(extras) {
     extraOptions.innerHTML = "";
@@ -1322,15 +1481,14 @@ function getSelectedExtras() {
 
 function calculateCurrentUnitPrice() {
     if (!currentProduct) return 0;
-
-    const extrasTotal = getSelectedExtras().reduce(
-        (total, extra) => total + extra.price,
-        0
-    );
-
-    return currentProduct.price + extrasTotal;
+    const presentation = regularOptions.querySelector('input[name="regularOption"]:checked');
+    const match = presentation?.value.match(/\$\s*([\d,]+(?:\.\d{1,2})?)/);
+    const presentationPrice = match ? Number(match[1].replace(/,/g, "")) : currentProduct.price;
+    const bread = breadOptions.querySelector('input[name="breadOption"]:checked');
+    const breadPrice = currentProduct.category === "hamburguesas" ? Number(bread?.dataset.price || 0) : 0;
+    const extrasTotal = getSelectedExtras().reduce((sum, extra) => sum + extra.price, 0);
+    return presentationPrice + breadPrice + extrasTotal;
 }
-
 
 function updateModalTotal() {
     const total = calculateCurrentUnitPrice() * modalQuantity;
@@ -1348,6 +1506,8 @@ productOptionsForm.addEventListener("submit", (event) => {
         document.querySelectorAll('input[name="regularOption"]:checked')
     ).map((input) => input.value);
 
+    const selectedBread = breadOptions?.querySelector('input[name="breadOption"]:checked');
+    const bread = currentProduct.category === "hamburguesas" ? (selectedBread?.value || "Pan de finas hierbas") : null;
     const selectedExtras = getSelectedExtras();
     const ingredientSelections = getSelectedProductIngredients();
     const ingredientChanges = getProductIngredientChanges();
@@ -1361,6 +1521,7 @@ productOptionsForm.addEventListener("submit", (event) => {
         unitPrice,
         quantity: modalQuantity,
         options: selectedOptions,
+        bread,
         extras: selectedExtras,
         ingredientSelections,
         ingredientChanges,
@@ -1423,6 +1584,12 @@ function renderCart() {
 }
 
 
+function escapeHTML(value) {
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    })[char]);
+}
+
 function createCartItem(item) {
     const article = document.createElement("article");
     article.className = "cart-item";
@@ -1431,18 +1598,18 @@ function createCartItem(item) {
     const optionsText = buildItemSpecifications(item);
 
     article.innerHTML = `
-        <img src="${item.image}" alt="${item.name}" class="cart-item__image">
+        <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" class="cart-item__image">
 
         <div class="cart-item__content">
             <div class="cart-item__heading">
-                <h3>${item.name}</h3>
+                <h3>${escapeHTML(item.name)}</h3>
                 <span class="cart-item__price">
                     ${formatCurrency(item.unitPrice * item.quantity)}
                 </span>
             </div>
 
-            ${optionsText ? `<p class="cart-item__options">${optionsText}</p>` : ""}
-            ${item.notes ? `<p class="cart-item__notes">Nota: ${item.notes}</p>` : ""}
+            ${optionsText ? `<p class="cart-item__options">${escapeHTML(optionsText)}</p>` : ""}
+            ${item.notes ? `<p class="cart-item__notes">Nota: ${escapeHTML(item.notes)}</p>` : ""}
         </div>
 
         <div class="cart-item__footer">
@@ -1467,6 +1634,7 @@ function buildItemSpecifications(item) {
     const specifications = [
         ...(item.ingredientChanges || []),
         ...(item.options || []),
+        ...(item.bread ? [item.bread] : []),
         ...(item.extras || []).map((extra) => extra.name)
     ];
     return specifications.join(", ");
@@ -1683,6 +1851,7 @@ sendWhatsAppButton.addEventListener("click", () => {
     if (!cart.length) return;
     if (!validateCheckout()) return;
 
+    if (MODO_PRUEBAS && !window.confirm("MODO DE PRUEBAS: se abrirá WhatsApp con un pedido de prueba. ¿Continuar?")) return;
     const message = createWhatsAppMessage();
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
@@ -1706,20 +1875,22 @@ function createWhatsAppMessage() {
     };
 
     const lines = [
-        "🍔 NUEVO PEDIDO - UPPSALA GRILLED BURGER",
+        MODO_PRUEBAS ? "🧪 PEDIDO DE PRUEBA - NO PREPARAR - UPPSALA GRILLED BURGER" : "🍔 NUEVO PEDIDO - UPPSALA GRILLED BURGER",
         ""
     ];
 
     cart.forEach((item) => {
         lines.push(`${item.quantity}x ${item.name}`);
         lines.push(`Precio base: ${formatCurrency(item.basePrice)}`);
+        if (item.bread) lines.push(`Pan: ${item.bread}${item.bread === "Pan brioche" ? " (+$40)" : ""}`);
+        if (item.ingredientChanges?.length) lines.push(`Modificaciones: ${item.ingredientChanges.join(", ")}`);
 
-        if (item.options.length) {
+        if (item.options?.length) {
             lines.push("Opciones:");
             item.options.forEach((opt) => lines.push(`• ${opt}`));
         }
 
-        if (item.extras.length) {
+        if (item.extras?.length) {
             lines.push("Extras:");
             item.extras.forEach((ext) => lines.push(`• ${ext.name} +${formatCurrency(ext.price)}`));
         }
