@@ -823,6 +823,13 @@ const cartOverlay = document.querySelector("#cartOverlay");
 const cartItems = document.querySelector("#cartItems");
 const emptyCart = document.querySelector("#emptyCart");
 const cartSubtotal = document.querySelector("#cartSubtotal");
+const shippingSummaryRow = document.querySelector("#shippingSummaryRow");
+const shippingSummaryPrice = document.querySelector("#shippingSummaryPrice");
+const shippingGrandTotalRow = document.querySelector("#shippingGrandTotalRow");
+const shippingGrandTotal = document.querySelector("#shippingGrandTotal");
+const shippingEstimator = document.querySelector("#shippingEstimator");
+const shippingDistance = document.querySelector("#shippingDistance");
+const shippingEstimateResult = document.querySelector("#shippingEstimateResult");
 const cartCount = document.querySelector("#cartCount");
 const sendWhatsAppButton = document.querySelector("#sendWhatsAppButton");
 const cartSummary = document.querySelector("#cartSummary");
@@ -1554,6 +1561,76 @@ productOptionsForm.addEventListener("submit", (event) => {
 });
 
 
+/* COTIZADOR DEMOSTRATIVO DE ENVÍO
+   Basado en el tabulador de motocicleta proporcionado por la clienta.
+   La distancia es SOLO de ida; combustible y desgaste se calculan ida/vuelta.
+   Los valores son estimaciones, no una tarifa final ni una ruta verificada.
+*/
+const SHIPPING_CONFIG = Object.freeze({
+    gasolinePerLiter: 24,
+    motorcycleKmPerLiter: 25,
+    maintenanceRatio: 0.40,
+    baseFee: 15,
+    riderCostPerMinute: 1,
+    roundTripMinutesPerOneWayKm: 6,
+    maxDemoDistanceKm: 5.5
+});
+
+function getCartProductsSubtotal() {
+    return cart.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+}
+
+function getDeliveryEstimate() {
+    if (getSelectedFulfillment() !== "domicilio") return null;
+
+    const raw = shippingDistance.value.trim();
+    if (!raw) return null;
+    const distance = Number(raw);
+
+    if (!Number.isFinite(distance) || distance <= 0 || distance > SHIPPING_CONFIG.maxDemoDistanceKm) {
+        return null;
+    }
+
+    const roundTripKm = distance * 2;
+    const fuel = (roundTripKm / SHIPPING_CONFIG.motorcycleKmPerLiter) * SHIPPING_CONFIG.gasolinePerLiter;
+    const wear = fuel * SHIPPING_CONFIG.maintenanceRatio;
+    const time = distance * SHIPPING_CONFIG.roundTripMinutesPerOneWayKm * SHIPPING_CONFIG.riderCostPerMinute;
+
+    return {
+        distance,
+        price: Math.round(SHIPPING_CONFIG.baseFee + fuel + wear + time)
+    };
+}
+
+function updateShippingEstimate() {
+    const isDelivery = getSelectedFulfillment() === "domicilio";
+    shippingEstimator.hidden = !isDelivery;
+    shippingSummaryRow.hidden = !isDelivery;
+    shippingGrandTotalRow.hidden = !isDelivery;
+
+    if (!isDelivery) return;
+
+    const estimate = getDeliveryEstimate();
+    const subtotal = getCartProductsSubtotal();
+
+    if (estimate) {
+        shippingEstimateResult.textContent = `Envío estimado: ${formatCurrency(estimate.price)}`;
+        shippingSummaryPrice.textContent = formatCurrency(estimate.price);
+        shippingGrandTotal.textContent = formatCurrency(subtotal + estimate.price);
+    } else {
+        const entered = shippingDistance.value.trim();
+        const km = Number(entered);
+        const outsideCoverage = entered && Number.isFinite(km) && km > SHIPPING_CONFIG.maxDemoDistanceKm;
+        shippingEstimateResult.textContent = outsideCoverage
+            ? "Para distancias mayores de 5.5 km, consulta el envío con Uppsala."
+            : "Ingresa una distancia válida mayor a 0 y hasta 5.5 km.";
+        shippingSummaryPrice.textContent = "Por cotizar";
+        shippingGrandTotal.textContent = `${formatCurrency(subtotal)} + envío`;
+    }
+}
+
+shippingDistance.addEventListener("input", updateShippingEstimate);
+
 /* RENDER DEL CARRITO */
 
 function renderCart() {
@@ -1569,6 +1646,7 @@ function renderCart() {
 
     cartCount.textContent = totalQuantity;
     cartSubtotal.textContent = formatCurrency(subtotal);
+    updateShippingEstimate();
 
     floatingCartButton.hidden = cart.length === 0;
     floatingCartCount.textContent = `${totalQuantity} ${totalQuantity === 1 ? "producto" : "productos"}`;
@@ -1793,6 +1871,7 @@ function updateCheckoutFields() {
     }
 
     updateBankDetails();
+    updateShippingEstimate();
 }
 
 
@@ -1832,6 +1911,11 @@ function validateCheckout() {
         if (!deliveryAddress.value.trim()) {
             showToast("Escribe la dirección de entrega");
             deliveryAddress.focus();
+            return false;
+        }
+        if (!getDeliveryEstimate()) {
+            showToast("Ingresa una distancia válida de hasta 5.5 km para cotizar");
+            shippingDistance.focus();
             return false;
         }
     }
@@ -1905,8 +1989,16 @@ function createWhatsAppMessage() {
 
     const total = cart.reduce((sub, item) => sub + item.unitPrice * item.quantity, 0);
 
+    const deliveryEstimate = getDeliveryEstimate();
     lines.push("------------------------");
-    lines.push(`TOTAL: ${formatCurrency(total)}`);
+    lines.push(`SUBTOTAL DE PRODUCTOS: ${formatCurrency(total)}`);
+    if (fulfillment === "domicilio" && deliveryEstimate) {
+        lines.push(`ENVÍO ESTIMADO (${deliveryEstimate.distance.toFixed(1)} km de ida): ${formatCurrency(deliveryEstimate.price)}`);
+        lines.push(`TOTAL ESTIMADO: ${formatCurrency(total + deliveryEstimate.price)}`);
+        lines.push("⚠️ Envío sujeto a ajuste y confirmación según la ruta real.");
+    } else {
+        lines.push(`TOTAL: ${formatCurrency(total)}`);
+    }
     lines.push("");
     lines.push(`Modalidad: ${fulfillmentLabels[fulfillment]}`);
 
@@ -1933,7 +2025,8 @@ function createWhatsAppMessage() {
 
     if (fulfillment === "domicilio") {
         lines.push("");
-        lines.push("Costo de envío: por confirmar");
+        lines.push("La distancia fue proporcionada por el cliente, no verificada por mapas.");
+        lines.push("El restaurante confirmará el costo definitivo antes de preparar/enviar.");
     }
 
     return lines.join("\n");

@@ -3244,3 +3244,35 @@ body {
         scroll-behavior: auto !important;
     }
 }
+
+/* COTIZADOR DE ENVÍO — demo integrada al carrito */
+.shipping-estimator {
+    margin: 14px 0 18px;
+    padding: 17px;
+    background: linear-gradient(145deg, rgba(0,229,255,.075), rgba(255,42,133,.07));
+    border: 1px solid rgba(0,229,255,.42);
+    border-radius: 16px;
+}
+.shipping-estimator[hidden], .shipping-summary-row[hidden], .shipping-grand-total[hidden] {
+    display: none !important;
+}
+.shipping-estimator__heading { display: flex; align-items: flex-start; gap: 11px; margin-bottom: 15px; }
+.shipping-estimator__heading > span { font-size: 1.65rem; line-height: 1; }
+.shipping-estimator__heading strong { display: block; color: #fff; font-size: 1rem; }
+.shipping-estimator__heading p { color: #b9c5d2; font-size: .82rem; line-height: 1.5; margin-top: 4px; }
+.shipping-estimator__label { display: block; margin-bottom: 8px; font-size: .85rem; font-weight: 800; }
+.shipping-estimator__input-row { display: flex; align-items: center; gap: 12px; max-width: 240px; }
+.shipping-estimator__input-row input {
+    width: 100%; min-width: 0; height: 46px; padding: 10px 13px;
+    border: 1px solid rgba(255,255,255,.32); border-radius: 10px;
+    background: #111219; color: #fff; font-size: 1.05rem; font-weight: 700;
+}
+.shipping-estimator__input-row input:focus { outline: 2px solid #00e5ff; outline-offset: 2px; }
+.shipping-estimator__input-row > span { color: #00e5ff; font-weight: 800; }
+.shipping-estimator__result { margin-top: 13px; font-size: 1.05rem; font-weight: 900; color: #00e5ff; }
+.shipping-estimator__notice {
+    margin-top: 10px; font-size: .76rem; line-height: 1.55;
+    color: #e1c8a0; border-left: 3px solid #ffd700; padding-left: 9px;
+}
+.shipping-grand-total { padding-top: 10px; border-top: 1px solid rgba(255,255,255,.2); }
+.shipping-grand-total strong { color: #ffd700; font-size: 1.2rem; }
